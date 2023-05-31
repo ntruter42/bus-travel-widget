@@ -6,6 +6,7 @@ const returnTrip = document.querySelector('#return-checkbox');
 
 // Get output elements
 const singlesCount = document.querySelector('.singles-count');
+const costPerSingle = document.querySelector('.singles-cost');
 
 // Create instance
 const bus = BusTravel();
@@ -16,7 +17,7 @@ returnTrip.checked = false;
 // Create functionality variables (eg. timeout id for messages)
 
 // Create function to calculate values based on input
-function calculateButtonClick(){
+function calculateButtonClick() {
 	bus.setPoints(points.value);
 	bus.setLocation(locations.options[locations.selectedIndex].value);
 	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
@@ -29,6 +30,7 @@ function calculateButtonClick(){
 	console.log();
 
 	singlesCount.innerHTML = bus.countSingles();
+	costPerSingle.innerHTML = 'R ' + bus.costPerSingle().toFixed(2);
 }
 
 function returnCheckboxToggle() {

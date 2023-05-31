@@ -11,7 +11,7 @@ body {
 	align-items: center;
 }
 
-.container{
+.container {
 	background-color: #aaf;
 	border-radius: 20px;
 	padding: 40px;
@@ -41,5 +41,5 @@ button {
 }
 
 .output-value {
-	justify-self: center;	
+	justify-self: center;
 }

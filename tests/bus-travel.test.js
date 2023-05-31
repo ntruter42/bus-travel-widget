@@ -1,6 +1,6 @@
 describe('BusTravel', function () {
 	let bus;
-	
+
 	beforeEach(function () {
 		bus = BusTravel();
 	});
@@ -20,7 +20,7 @@ describe('BusTravel', function () {
 	describe('setPoints, getPoints', function () {
 		it('should set and return points amount of 50', function () {
 			bus.setPoints(50);
-			
+
 			assert.equal(bus.getPoints(), 50);
 		});
 
@@ -58,7 +58,7 @@ describe('BusTravel', function () {
 	describe('setLocation, getLocation', function () {
 		it('should return "Khayelitsha" when location is set to "Khayelitsha"', function () {
 			bus.setLocation("Khayelitsha");
-			
+
 			assert.equal(bus.getLocation(), "Khayelitsha");
 		});
 
@@ -124,7 +124,7 @@ describe('BusTravel', function () {
 			bus.setPoints(120);
 			bus.setLocation("Khayelitsha");
 			bus.setTime("off-peak");
-			
+
 			assert.equal(bus.countSingles(), 3);
 		});
 
@@ -147,7 +147,7 @@ describe('BusTravel', function () {
 		it('should return 1 for 40 points if location is set to "Khayelitsha" during off-peak and 0 during peak', function () {
 			bus.setPoints(40);
 			bus.setLocation("Khayelitsha");
-			
+
 			bus.setTime("off-peak");
 			assert.equal(bus.countSingles(), 1);
 
@@ -160,6 +160,25 @@ describe('BusTravel', function () {
 	// "Khayelitsha" = 40 points
 	// "Dunoon" = 25 points
 	// "Mitchells Plain" = 30 points
+	describe('costPerSingle', function () {
+		it('should return 40 for "Khayelitsha"', function () {
+			bus.setLocation("Khayelitsha");
+
+			assert.equal(bus.costPerSingle(), 40);
+		});
+
+		it('should return 40 for "Dunoon"', function () {
+			bus.setLocation("Dunoon");
+
+			assert.equal(bus.costPerSingle(), 25);
+		});
+
+		it('should return 40 for "Mitchells Plain"', function () {
+			bus.setLocation("Mitchells Plain");
+
+			assert.equal(bus.costPerSingle(), 30);
+		});
+	});
 
 	// Test countReturns for:
 	// 160 points to "Khayelitsha" (40 points)

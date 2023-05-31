@@ -75,6 +75,10 @@ function BusTravel() {
 	}
 
 	// return cost per single trip from location-cost object
+	function costPerSingle() {
+		return locationCost[getLocation()];
+	}
+
 	// count number of return trips
 	// return cost per return trip from location-cost object
 	// set and get validation messages
@@ -88,6 +92,7 @@ function BusTravel() {
 		isPeak,
 		toggleReturn,
 		isReturn,
-		countSingles
+		countSingles,
+		costPerSingle
 	};
 }
