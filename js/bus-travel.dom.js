@@ -11,19 +11,21 @@ const returnsCount = document.querySelector('.returns-count');
 const costPerReturn = document.querySelector('.returns-cost');
 const singleElements = document.querySelectorAll('.single-element');
 const returnElements = document.querySelectorAll('.return-element');
-
+const message = document.querySelector('.message');
 
 // Create instance
 const bus = BusTravel();
 
 // Initialize first load / refresh behavior
 returnTrip.checked = false;
+let timeout;
 
 // Create function to calculate values based on input
 function calculateButtonClick() {
 	bus.setPoints(points.value);
 	bus.setLocation(locations.options[locations.selectedIndex].value);
 	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
+	clearTimeout(timeout);
 
 	if (bus.isReturn()) {
 		singleElements.forEach(element => {
@@ -41,40 +43,40 @@ function calculateButtonClick() {
 		});
 	}
 
-	let message = '';
-	singlesCount.classList.remove('danger', 'warning');
-	returnsCount.classList.remove('danger', 'warning');
+	message.classList.remove('danger', 'warning');
+	message.classList.add('hidden');
 
-	if (isNaN(points.value)) {
-		message = "Points amount is invalid";
-		singlesCount.innerHTML = message;
-		returnsCount.innerHTML = message;
-		singlesCount.classList.add('danger');
-		returnsCount.classList.add('danger');
+	if (points.value === '') {
+		message.innerHTML = "Enter points amount";
+		message.classList.add('danger');
+		message.classList.remove('hidden');
+	} else if (isNaN(points.value)) {
+		message.innerHTML = "Points amount must be a number";
+		message.classList.add('danger');
+		message.classList.remove('hidden');
 	} else if (Number(points.value) < 0) {
-		message = "Points amount cannot be negative";
-		singlesCount.innerHTML = message;
-		returnsCount.innerHTML = message;
-		singlesCount.classList.add('warning');
-		returnsCount.classList.add('warning');
+		message.innerHTML = "Points amount cannot be negative";
+		message.classList.add('danger');
+		message.classList.remove('hidden');
 	} else if (bus.getPoints() === 0) {
-		message = "No points, no trips :(";
-		singlesCount.innerHTML = message;
-		returnsCount.innerHTML = message;
-		singlesCount.classList.add('warning');
-		returnsCount.classList.add('warning');
+		message.innerHTML = "No points, no trips";
+		message.classList.add('warning');
+		message.classList.remove('hidden');
 	} else if (!bus.isReturn() && bus.getPoints() < bus.costPerSingle()) {
-		message = "Not enough points for a single trip";
-		singlesCount.innerHTML = message;
-		singlesCount.classList.add('warning');
+		message.innerHTML = "Not enough points for a single trip";
+		message.classList.add('warning');
+		message.classList.remove('hidden');
 	} else if (bus.isReturn() && bus.getPoints() < bus.costPerReturn()) {
-		message = "Not enough points for a return trip";
-		returnsCount.innerHTML = message;
-		returnsCount.classList.add('warning');
+		message.innerHTML = "Not enough points for a return trip";
+		message.classList.add('warning');
+		message.classList.remove('hidden');
 	} else {
 		singlesCount.innerHTML = bus.countSingles();
 		returnsCount.innerHTML = bus.countReturns();
 	}
+	timeout = setTimeout(function () {
+		message.classList.add('hidden');
+	}, 3000);
 	costPerSingle.innerHTML = 'R' + bus.costPerSingle().toFixed(2);
 	costPerReturn.innerHTML = 'R' + bus.costPerReturn().toFixed(2);
 }

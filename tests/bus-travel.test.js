@@ -5,13 +5,6 @@ describe('BusTravel', function () {
 		bus = BusTravel();
 	});
 
-	// template to copy & paste
-	describe('FunctionName', function () {
-		it('test description', function () {
-			assert.equal(true, true);
-		});
-	});
-
 	// Test setPoints for:
 	// valid number
 	// zero

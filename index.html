@@ -30,11 +30,10 @@
 				<option value="Mitchells Plain">Mitchells Plain</option>
 			</select>
 
-
-			<!-- Create radio button for peak option -->
+			<!-- Create radio button for off-peak option -->
 			<div class="radio-container">
-				<input type="radio" name="peak" id="peak-radio" value="peak">
-				<label for="peak-radio">Peak</label>
+				<input type="radio" name="peak" id="off-peak-radio" value="off-peak" checked>
+				<label for="off-peak-radio">Off peak</label>
 			</div>
 
 			<!-- Create checkbox for return trip option -->
@@ -43,10 +42,10 @@
 				<label for="return-checkbox">Return Trip</label>
 			</div>
 
-			<!-- Create radio button for off-peak option -->
+			<!-- Create radio button for peak option -->
 			<div class="radio-container">
-				<input type="radio" name="peak" id="off-peak-radio" value="off-peak">
-				<label for="off-peak-radio">Off peak</label>
+				<input type="radio" name="peak" id="peak-radio" value="peak">
+				<label for="peak-radio">Peak</label>
 			</div>
 
 
@@ -71,6 +70,8 @@
 			<!-- Create div for return trip cost output -->
 			<span class="return-element hidden">Price per <b>return</b> trip</span>
 			<span class="returns-cost output-value return-element hidden">R0.00</span>
+
+			<div class="message output-value hidden">Message for testing only</div>
 		</div>
 	</div>
 
