@@ -119,6 +119,42 @@ describe('BusTravel', function () {
 	// 120 points to "Dunoon" (25 points)
 	// 300 points to "Mitchells Plain" (30 points)
 	// 20 points to "Khayelitsha" (40 points)
+	describe('countSingles', function () {
+		it('should return 3 for 120 points if location is set to "Khayelitsha" during off-peak', function () {
+			bus.setPoints(120);
+			bus.setLocation("Khayelitsha");
+			bus.setTime("off-peak");
+			
+			assert.equal(bus.countSingles(), 3);
+		});
+
+		it('should return 4 for 120 points if location is set to "Dunoon" during off-peak', function () {
+			bus.setPoints(120);
+			bus.setLocation("Dunoon");
+			bus.setTime("off-peak");
+
+			assert.equal(bus.countSingles(), 4);
+		});
+
+		it('should return 10 for 300 points if location is set to "Mitchells Plain" during peak hours', function () {
+			bus.setPoints(300);
+			bus.setLocation("Mitchells Plain");
+			bus.setTime("peak");
+
+			assert.equal(bus.countSingles(), 8);
+		});
+
+		it('should return 1 for 40 points if location is set to "Khayelitsha" during off-peak and 0 during peak', function () {
+			bus.setPoints(40);
+			bus.setLocation("Khayelitsha");
+			
+			bus.setTime("off-peak");
+			assert.equal(bus.countSingles(), 1);
+
+			bus.setTime("peak");
+			assert.equal(bus.countSingles(), 0);
+		});
+	});
 
 	// Test costPerSingle for:
 	// "Khayelitsha" = 40 points

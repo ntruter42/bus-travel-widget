@@ -25,28 +25,30 @@
 			<!-- Create select dropdown with 3 options for location -->
 			<label for="location-dropdown">Filter</label>
 			<select name="location-dropdown" id="location-dropdown">
-				<option value="khayelitsha">Khayelitsha</option>
-				<option value="dunoon">Dunoon</option>
-				<option value="mitchells-plain">Mitchells Plain</option>
+				<option value="Khayelitsha">Khayelitsha</option>
+				<option value="Dunoon">Dunoon</option>
+				<option value="Mitchells Plain">Mitchells Plain</option>
 			</select>
 
 
-			<!-- Create 2 radio buttons for peak option -->
+			<!-- Create radio button for peak option -->
 			<div class="radio-container">
 				<input type="radio" name="peak" id="peak-radio" value="peak">
 				<label for="peak-radio">Peak</label>
 			</div>
 
+			<!-- Create checkbox for return trip option -->
+			<div class="checkbox-container">
+				<input type="checkbox" name="return-checkbox" id="return-checkbox">
+				<label for="return-checkbox">Return Trip</label>
+			</div>
+
+			<!-- Create radio button for off-peak option -->
 			<div class="radio-container">
 				<input type="radio" name="peak" id="off-peak-radio" value="off-peak">
 				<label for="off-peak-radio">Off peak</label>
 			</div>
 
-			<!-- Create checkbox for return trip option -->
-			<div class="radio-container">
-				<input type="checkbox" name="return-checkbox" id="return-checkbox">
-				<label for="return-checkbox">Return Trip</label>
-			</div>
 
 			<!-- Create button to calculate values -->
 			<button type="button" id="calculate-button">Calculate</button>
@@ -56,19 +58,19 @@
 
 			<!-- Create div for single trips count output -->
 			<span>Number of single trips</span>
-			<span class="singles-count"></span>
+			<span class="singles-count output-value">0</span>
 
 			<!-- Create div for single trip cost output -->
 			<span>Price per single trip</span>
-			<span class="singles-cost"></span>
+			<span class="singles-cost output-value">R 0.00</span>
 
 			<!-- Create div for return trips count output -->
 			<span>Number of return trips</span>
-			<span class="returns-count"></span>
+			<span class="returns-count output-value">0</span>
 
 			<!-- Create div for return trip cost output -->
 			<span>Price per return trip</span>
-			<span class="returns-cost"></span>
+			<span class="returns-cost output-value">R 0.00</span>
 		</div>
 	</div>
 

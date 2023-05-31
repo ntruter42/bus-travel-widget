@@ -5,6 +5,7 @@ const locations = document.querySelector('#location-dropdown');
 const returnTrip = document.querySelector('#return-checkbox');
 
 // Get output elements
+const singlesCount = document.querySelector('.singles-count');
 
 // Create instance
 const bus = BusTravel();
@@ -26,6 +27,8 @@ function calculateButtonClick(){
 	console.log("Peak: " + bus.isPeak());
 	console.log("Return: " + bus.isReturn());
 	console.log();
+
+	singlesCount.innerHTML = bus.countSingles();
 }
 
 function returnCheckboxToggle() {

@@ -8,6 +8,11 @@ function BusTravel() {
 	// create variable to store return-trip boolean
 	let returnTrip = false;
 	// create object to store location costs
+	let locationCost = {
+		"Khayelitsha": 40,
+		"Dunoon": 25,
+		"Mitchells Plain": 30
+	}
 
 	// set and get points input as number
 	function setPoints(pointsInput) {
@@ -60,6 +65,15 @@ function BusTravel() {
 	}
 
 	// count number of single trips
+	function countSingles() {
+		let cost = locationCost[getLocation()];
+		if (isPeak()) {
+			// 25% = 100% / 4
+			cost += cost / 4;
+		}
+		return Math.floor(getPoints() / cost);
+	}
+
 	// return cost per single trip from location-cost object
 	// count number of return trips
 	// return cost per return trip from location-cost object
@@ -73,6 +87,7 @@ function BusTravel() {
 		setTime,
 		isPeak,
 		toggleReturn,
-		isReturn
+		isReturn,
+		countSingles
 	};
 }
