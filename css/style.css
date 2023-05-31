@@ -9,4 +9,14 @@ body {
 
 .container {
 	display: flex;
+	flex-direction: column;
+}
+
+.input-section, .output-section {
+	display: flex;
+	flex-direction: column;
+}
+
+button {
+	margin: auto;
 }
