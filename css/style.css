@@ -1,0 +1,12 @@
+:root {
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+body {
+	font-size: 1rem;
+}
+
+.container {
+	display: flex;
+}
