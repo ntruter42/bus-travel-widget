@@ -7,61 +7,71 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bus Travel Widget</title>
 	<!-- insert bus favicon here -->
+	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<div class="container">
-		<!-- insert bus icon here -->
-		<h1>Bus Travel Widget</h1>
-		<div class="input-section">
+
+		<div class="grid">
+			<!-- insert bus icon here -->
+			<h1>Bus Travel Widget</h1>
 			<!-- Create number input for points -->
-			<label for="points-input">Points
-				<input type="number" name="points-input" id="points-input">
-			</label>
+			<label for="points-input">Points</label>
+			<input type="number" name="points-input" id="points-input">
+
 
 			<!-- Create select dropdown with 3 options for location -->
-			<label for="location-dropdown">Filter
-				<select name="location-dropdown" id="location-dropdown">
-					<option value="khayelitsha">Khayelitsha</option>
-					<option value="dunoon">Dunoon</option>
-					<option value="mitchells-plain">Mitchells Plain</option>
-				</select>
-			</label>
+			<label for="location-dropdown">Filter</label>
+			<select name="location-dropdown" id="location-dropdown">
+				<option value="khayelitsha">Khayelitsha</option>
+				<option value="dunoon">Dunoon</option>
+				<option value="mitchells-plain">Mitchells Plain</option>
+			</select>
+
 
 			<!-- Create 2 radio buttons for peak option -->
-			<label for="peak-radio">
+			<div class="radio-container">
 				<input type="radio" name="peak" id="peak-radio" value="peak">
-				Peak
-			</label>
-			<label for="off-peak-radio">
+				<label for="peak-radio">Peak</label>
+			</div>
+
+			<div class="radio-container">
 				<input type="radio" name="peak" id="off-peak-radio" value="off-peak">
-				Off peak
-			</label>
+				<label for="off-peak-radio">Off peak</label>
+			</div>
 
 			<!-- Create checkbox for return trip option -->
-			<label for="return-checkbox">
+			<div class="radio-container">
 				<input type="checkbox" name="return-checkbox" id="return-checkbox">
-				Return Trip
-			</label>
+				<label for="return-checkbox">Return Trip</label>
+			</div>
 
 			<!-- Create button to calculate values -->
 			<button type="button" id="calculate-button">Calculate</button>
 
-			<!-- Create div for single trips count output -->
-
-			<!-- Create div for single trip cost output -->
-
-			<!-- Create div for return trips count output -->
-
-			<!-- Create div for return trip cost output -->
-		</div>
-		<div class="output-section">
 			<!-- insert calculate icon here -->
 			<h2>Calculations</h2>
 
+			<!-- Create div for single trips count output -->
+			<span>Number of single trips</span>
+			<span class="singles-count"></span>
+
+			<!-- Create div for single trip cost output -->
+			<span>Price per single trip</span>
+			<span class="singles-cost"></span>
+
+			<!-- Create div for return trips count output -->
+			<span>Number of return trips</span>
+			<span class="returns-count"></span>
+
+			<!-- Create div for return trip cost output -->
+			<span>Price per return trip</span>
+			<span class="returns-cost"></span>
 		</div>
 	</div>
+
 
 	<script src="js/bus-travel.factory.js"></script>
 	<script src="js/bus-travel.dom.js"></script>
