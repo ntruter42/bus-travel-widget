@@ -66,17 +66,12 @@ function BusTravel() {
 
 	// count number of single trips
 	function countSingles() {
-		let cost = locationCost[getLocation()];
-		if (isPeak()) {
-			// 25% = 100% / 4
-			cost += cost / 4;
-		}
-		return Math.floor(getPoints() / cost);
+		return Math.floor(getPoints() / isPeakCost(locationCost[getLocation()]));
 	}
 
 	// return cost per single trip from location-cost object
 	function costPerSingle() {
-		return locationCost[getLocation()];
+		return isPeakCost(locationCost[getLocation()]);
 	}
 
 	// count number of return trips
@@ -85,7 +80,18 @@ function BusTravel() {
 	}
 
 	// return cost per return trip from location-cost object
-	// set and get validation messages
+	function costPerReturn() {
+		return isPeakCost(locationCost[getLocation()]) * 2;
+	}
+
+	// calculate peak cost only if peak is set to true
+	function isPeakCost(cost) {
+		if (isPeak()) {
+			// 25% = 100% / 4
+			cost += cost / 4;
+		}
+		return cost;
+	}
 
 	return {
 		setPoints,
@@ -98,6 +104,8 @@ function BusTravel() {
 		isReturn,
 		countSingles,
 		costPerSingle,
-		countReturns
+		countReturns,
+		costPerReturn,
+		isPeakCost
 	};
 }

@@ -167,13 +167,13 @@ describe('BusTravel', function () {
 			assert.equal(bus.costPerSingle(), 40);
 		});
 
-		it('should return 40 for "Dunoon"', function () {
+		it('should return 25 for "Dunoon"', function () {
 			bus.setLocation("Dunoon");
 
 			assert.equal(bus.costPerSingle(), 25);
 		});
 
-		it('should return 40 for "Mitchells Plain"', function () {
+		it('should return 30 for "Mitchells Plain"', function () {
 			bus.setLocation("Mitchells Plain");
 
 			assert.equal(bus.costPerSingle(), 30);
@@ -226,4 +226,23 @@ describe('BusTravel', function () {
 	// "Khayelitsha" = 80 points
 	// "Dunoon" = 50 points
 	// "Mitchells Plain" = 60 points
+	describe('costPerSingle', function () {
+		it('should return 80 for "Khayelitsha"', function () {
+			bus.setLocation("Khayelitsha");
+
+			assert.equal(bus.costPerReturn(), 80);
+		});
+
+		it('should return 50 for "Dunoon"', function () {
+			bus.setLocation("Dunoon");
+
+			assert.equal(bus.costPerReturn(), 50);
+		});
+
+		it('should return 60 for "Mitchells Plain"', function () {
+			bus.setLocation("Mitchells Plain");
+
+			assert.equal(bus.costPerReturn(), 60);
+		});
+	});
 });

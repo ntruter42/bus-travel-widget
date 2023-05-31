@@ -8,6 +8,7 @@ const returnTrip = document.querySelector('#return-checkbox');
 const singlesCount = document.querySelector('.singles-count');
 const costPerSingle = document.querySelector('.singles-cost');
 const returnsCount = document.querySelector('.returns-count');
+const costPerReturn = document.querySelector('.returns-cost');
 
 // Create instance
 const bus = BusTravel();
@@ -23,16 +24,10 @@ function calculateButtonClick() {
 	bus.setLocation(locations.options[locations.selectedIndex].value);
 	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
 
-	// Log outputs to test if input elements work
-	console.log("Points: " + bus.getPoints());
-	console.log("Location: " + bus.getLocation());
-	console.log("Peak: " + bus.isPeak());
-	console.log("Return: " + bus.isReturn());
-	console.log();
-
 	singlesCount.innerHTML = bus.countSingles();
 	costPerSingle.innerHTML = 'R' + bus.costPerSingle().toFixed(2);
 	returnsCount.innerHTML = bus.countReturns();
+	costPerReturn.innerHTML = 'R' + bus.costPerReturn().toFixed(2);
 }
 
 function returnCheckboxToggle() {
