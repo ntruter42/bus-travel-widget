@@ -1,6 +1,7 @@
 // Get input elements
-const calculate = document.querySelector('#calculate-button')
+const calculate = document.querySelector('#calculate-button');
 const points = document.querySelector('#points-input');
+const locations = document.querySelector('#location-dropdown');
 
 // Get output elements
 
@@ -12,7 +13,11 @@ const bus = BusTravel();
 // Create function to calculate values based on input
 function calculateButtonClick(){
 	bus.setPoints(points.value);
+	bus.setLocation(locations.options[locations.selectedIndex].value);
+
+	// Log outputs to test if input elements work
 	console.log(bus.getPoints());
+	console.log(bus.getLocation());
 }
 
 // Create function to display invalid / empty input messages

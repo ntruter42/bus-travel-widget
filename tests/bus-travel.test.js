@@ -1,8 +1,8 @@
 describe('BusTravel', function () {
-	let busTravel;
+	let bus;
 	
 	beforeEach(function () {
-		busTravel = BusTravel();
+		bus = BusTravel();
 	});
 
 	// template to copy & paste
@@ -19,35 +19,35 @@ describe('BusTravel', function () {
 	// string
 	describe('setPoints, getPoints', function () {
 		it('should set and return points amount of 50', function () {
-			busTravel.setPoints(50);
+			bus.setPoints(50);
 			
-			assert.equal(busTravel.getPoints(), 50);
+			assert.equal(bus.getPoints(), 50);
 		});
 
 		it('should set and return points amount of 0', function () {
-			busTravel.setPoints(0);
+			bus.setPoints(0);
 
-			assert.equal(busTravel.getPoints(), 0);
+			assert.equal(bus.getPoints(), 0);
 		});
 
 		it('should not set points amount to negative number', function () {
-			busTravel.setPoints(-50);
+			bus.setPoints(-50);
 
-			assert.equal(busTravel.getPoints(), 0);
+			assert.equal(bus.getPoints(), 0);
 		});
 
 		it('should not set points amount to value that is not a number', function () {
-			busTravel.setPoints('hello');
+			bus.setPoints("hello");
 
-			assert.equal(busTravel.getPoints(), 0);
+			assert.equal(bus.getPoints(), 0);
 		});
 
 		it('should keep initial value of points if invalid input is given', function () {
-			busTravel.setPoints(50);
-			assert.equal(busTravel.getPoints(), 50);
+			bus.setPoints(50);
+			assert.equal(bus.getPoints(), 50);
 
-			busTravel.setPoints(-10);
-			assert.equal(busTravel.getPoints(), 50);
+			bus.setPoints(-10);
+			assert.equal(bus.getPoints(), 50);
 		});
 	});
 
@@ -55,6 +55,25 @@ describe('BusTravel', function () {
 	// "Khayelitsha"
 	// "Dunoon"
 	// "Mitchells Plain"
+	describe('setLocation, getLocation', function () {
+		it('should return "Khayelitsha" when location is set to "Khayelitsha"', function () {
+			bus.setLocation("Khayelitsha");
+			
+			assert.equal(bus.getLocation(), "Khayelitsha");
+		});
+
+		it('should return "Dunoon" when location is set to "Dunoon"', function () {
+			bus.setLocation("Dunoon");
+
+			assert.equal(bus.getLocation(), "Dunoon");
+		});
+
+		it('should return "Mitchells Plain" when location is set to "Mitchells Plain"', function () {
+			bus.setLocation("Mitchells Plain");
+
+			assert.equal(bus.getLocation(), "Mitchells Plain");
+		});
+	});
 
 	// Test setTime for:
 	// set peak boolean to true for peak string
