@@ -14,10 +14,12 @@ const bus = BusTravel();
 function calculateButtonClick(){
 	bus.setPoints(points.value);
 	bus.setLocation(locations.options[locations.selectedIndex].value);
+	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
 
 	// Log outputs to test if input elements work
 	console.log(bus.getPoints());
 	console.log(bus.getLocation());
+	console.log(bus.isPeak());
 }
 
 // Create function to display invalid / empty input messages

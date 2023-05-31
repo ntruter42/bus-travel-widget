@@ -78,6 +78,19 @@ describe('BusTravel', function () {
 	// Test setTime for:
 	// set peak boolean to true for peak string
 	// set peak boolean to false for off-peak string
+	describe('setTime, isPeak', function () {
+		it('should return true if time is set to "peak"', function () {
+			bus.setTime("peak");
+
+			assert.equal(bus.isPeak(), true);
+		});
+
+		it('should return false if time is set to "off-peak"', function () {
+			bus.setTime("off-peak");
+
+			assert.equal(bus.isPeak(), false);
+		});
+	});
 
 	// Test toggleReturn for:
 	// set return boolean to true for return ticket
