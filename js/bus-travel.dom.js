@@ -9,14 +9,13 @@ const singlesCount = document.querySelector('.singles-count');
 const costPerSingle = document.querySelector('.singles-cost');
 const returnsCount = document.querySelector('.returns-count');
 const costPerReturn = document.querySelector('.returns-cost');
+const outputElements = document.querySelectorAll('.output-element');
 
 // Create instance
 const bus = BusTravel();
 
 // Initialize first load / refresh behavior
 returnTrip.checked = false;
-
-// Create functionality variables (eg. timeout id for messages)
 
 // Create function to calculate values based on input
 function calculateButtonClick() {
@@ -32,9 +31,11 @@ function calculateButtonClick() {
 
 function returnCheckboxToggle() {
 	bus.toggleReturn();
-}
 
-// Create function to display invalid / empty input messages
+	outputElements.forEach(element => {
+		element.classList.toggle('hidden');
+	});
+}
 
 // Create event listener for calculate button
 calculate.addEventListener('click', calculateButtonClick);
