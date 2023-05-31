@@ -2,11 +2,15 @@
 const calculate = document.querySelector('#calculate-button');
 const points = document.querySelector('#points-input');
 const locations = document.querySelector('#location-dropdown');
+const returnTrip = document.querySelector('#return-checkbox');
 
 // Get output elements
 
 // Create instance
 const bus = BusTravel();
+
+// Initialize first load / refresh behavior
+returnTrip.checked = false;
 
 // Create functionality variables (eg. timeout id for messages)
 
@@ -17,12 +21,20 @@ function calculateButtonClick(){
 	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
 
 	// Log outputs to test if input elements work
-	console.log(bus.getPoints());
-	console.log(bus.getLocation());
-	console.log(bus.isPeak());
+	console.log("Points: " + bus.getPoints());
+	console.log("Location: " + bus.getLocation());
+	console.log("Peak: " + bus.isPeak());
+	console.log("Return: " + bus.isReturn());
+	console.log();
+}
+
+function returnCheckboxToggle() {
+	bus.toggleReturn();
 }
 
 // Create function to display invalid / empty input messages
 
 // Create event listener for calculate button
 calculate.addEventListener('click', calculateButtonClick);
+
+returnTrip.addEventListener('change', returnCheckboxToggle);

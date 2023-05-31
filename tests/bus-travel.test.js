@@ -93,8 +93,26 @@ describe('BusTravel', function () {
 	});
 
 	// Test toggleReturn for:
-	// set return boolean to true for return ticket
+	// set return boolean to true first 
 	// set return boolean to false for non-return ticket
+	describe('toggleReturn, isReturn', function () {
+		it('should return false if not toggled on', function () {
+			assert.equal(bus.isReturn(), false);
+		});
+
+		it('should return true if toggled first time', function () {
+			bus.toggleReturn();
+
+			assert.equal(bus.isReturn(), true);
+		});
+
+		it('should return true if toggled twice', function () {
+			bus.toggleReturn();
+			bus.toggleReturn();
+
+			assert.equal(bus.isReturn(), false);
+		});
+	});
 
 	// Test countSingles for:
 	// 120 points to "Khayelitsha" (40 points)

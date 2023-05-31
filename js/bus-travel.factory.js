@@ -4,8 +4,9 @@ function BusTravel() {
 	// create variable to store location string
 	let location = '';
 	// create variable to store peak/off-peak time boolean
-	let peak = false;
+	let peakTime = false;
 	// create variable to store return-trip boolean
+	let returnTrip = false;
 	// create object to store location costs
 
 	// set and get points input as number
@@ -32,20 +33,32 @@ function BusTravel() {
 		return location;
 	}
 
-	// set and get peak/off-peak time as a boolean from a string
+	// set and check peak/off-peak time as a boolean from a string
 	function setTime(time) {
 		if (time === 'peak') {
-			peak = true;
+			peakTime = true;
 		} else if (time === 'off-peak') {
-			peak = false;
+			peakTime = false;
 		}
 	}
 
 	function isPeak() {
-		return peak;
+		return peakTime;
 	}
 
-	// toggle  and check return-trip option as a boolean
+	// toggle and check return-trip option as a boolean
+	function toggleReturn() {
+		if (returnTrip === false) {
+			returnTrip = true;
+		} else if (returnTrip === true) {
+			returnTrip = false;
+		}
+	}
+
+	function isReturn() {
+		return returnTrip;
+	}
+
 	// count number of single trips
 	// return cost per single trip from location-cost object
 	// count number of return trips
@@ -58,6 +71,8 @@ function BusTravel() {
 		setLocation,
 		getLocation,
 		setTime,
-		isPeak
+		isPeak,
+		toggleReturn,
+		isReturn
 	};
 }
