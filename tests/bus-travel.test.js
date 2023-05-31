@@ -136,7 +136,7 @@ describe('BusTravel', function () {
 			assert.equal(bus.countSingles(), 4);
 		});
 
-		it('should return 10 for 300 points if location is set to "Mitchells Plain" during peak hours', function () {
+		it('should return 8 for 300 points if location is set to "Mitchells Plain" during peak hours', function () {
 			bus.setPoints(300);
 			bus.setLocation("Mitchells Plain");
 			bus.setTime("peak");
@@ -185,6 +185,42 @@ describe('BusTravel', function () {
 	// 160 points to "Dunoon" (25 points)
 	// 450 points to "Mitchells Plain" (30 points)
 	// 50 points to "Mitchells Plain" (30 points)
+	describe('countReturns', function () {
+		it('should return 1 for 120 points if location is set to "Khayelitsha" during peak', function () {
+			bus.setPoints(120);
+			bus.setLocation("Khayelitsha");
+			bus.setTime("peak");
+
+			assert.equal(bus.countReturns(), 1);
+		});
+
+		it('should return 2 for 120 points if location is set to "Dunoon" during off-peak', function () {
+			bus.setPoints(120);
+			bus.setLocation("Dunoon");
+			bus.setTime("off-peak");
+
+			assert.equal(bus.countReturns(), 2);
+		});
+
+		it('should return 5 for 300 points if location is set to "Mitchells Plain" during off-peak hours', function () {
+			bus.setPoints(300);
+			bus.setLocation("Mitchells Plain");
+			bus.setTime("off-peak");
+
+			assert.equal(bus.countReturns(), 5);
+		});
+
+		it('should return 0 for 80 points if location is set to "Khayelitsha" during peak and 1 during off-peak', function () {
+			bus.setPoints(80);
+			bus.setLocation("Khayelitsha");
+
+			bus.setTime("peak");
+			assert.equal(bus.countReturns(), 0);
+
+			bus.setTime("off-peak");
+			assert.equal(bus.countReturns(), 1);
+		});
+	});
 
 	// Test costPerReturn for:
 	// "Khayelitsha" = 80 points

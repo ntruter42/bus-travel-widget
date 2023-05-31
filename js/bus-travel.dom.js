@@ -7,6 +7,7 @@ const returnTrip = document.querySelector('#return-checkbox');
 // Get output elements
 const singlesCount = document.querySelector('.singles-count');
 const costPerSingle = document.querySelector('.singles-cost');
+const returnsCount = document.querySelector('.returns-count');
 
 // Create instance
 const bus = BusTravel();
@@ -30,7 +31,8 @@ function calculateButtonClick() {
 	console.log();
 
 	singlesCount.innerHTML = bus.countSingles();
-	costPerSingle.innerHTML = 'R ' + bus.costPerSingle().toFixed(2);
+	costPerSingle.innerHTML = 'R' + bus.costPerSingle().toFixed(2);
+	returnsCount.innerHTML = bus.countReturns();
 }
 
 function returnCheckboxToggle() {

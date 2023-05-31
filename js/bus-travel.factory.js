@@ -80,6 +80,10 @@ function BusTravel() {
 	}
 
 	// count number of return trips
+	function countReturns() {
+		return Math.floor(countSingles() / 2);
+	}
+
 	// return cost per return trip from location-cost object
 	// set and get validation messages
 
@@ -93,6 +97,7 @@ function BusTravel() {
 		toggleReturn,
 		isReturn,
 		countSingles,
-		costPerSingle
+		costPerSingle,
+		countReturns
 	};
 }
