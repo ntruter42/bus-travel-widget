@@ -51,7 +51,7 @@ button:active {
 	box-shadow: none;
 }
 
-input[type="number"],
+input[name="points-input"],
 select {
 	padding: 10px 20px;
 	text-align: center;
@@ -80,4 +80,12 @@ select {
 
 .hidden {
 	display: none;
+}
+
+.danger {
+	background-color: #f44;
+}
+
+.warning {
+	background-color: #fa4;
 }

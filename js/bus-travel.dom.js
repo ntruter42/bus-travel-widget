@@ -23,9 +23,41 @@ function calculateButtonClick() {
 	bus.setLocation(locations.options[locations.selectedIndex].value);
 	bus.setTime(document.querySelector('input[name="peak"]:checked').value);
 
-	singlesCount.innerHTML = bus.countSingles();
+	let message = '';
+	singlesCount.classList.remove('danger', 'warning');
+	returnsCount.classList.remove('danger', 'warning');
+
+	if (isNaN(points.value)) {
+		message = "Points amount is invalid";
+		singlesCount.innerHTML = message;
+		returnsCount.innerHTML = message;
+		singlesCount.classList.add('danger');
+		returnsCount.classList.add('danger');
+	} else if (Number(points.value) < 0) {
+		message = "Points amount cannot be negative";
+		singlesCount.innerHTML = message;
+		returnsCount.innerHTML = message;
+		singlesCount.classList.add('warning');
+		returnsCount.classList.add('warning');
+	} else if (bus.getPoints() === 0) {
+		message = "No points, no trips :(";
+		singlesCount.innerHTML = message;
+		returnsCount.innerHTML = message;
+		singlesCount.classList.add('warning');
+		returnsCount.classList.add('warning');
+	} else if (!bus.isReturn() && bus.getPoints() < bus.costPerSingle()) {
+		message = "Not enough points for a single trip";
+		singlesCount.innerHTML = message;
+		singlesCount.classList.add('warning');
+	} else if (bus.isReturn() && bus.getPoints() < bus.costPerReturn()) {
+		message = "Not enough points for a return trip";
+		returnsCount.innerHTML = message;
+		returnsCount.classList.add('warning');
+	} else {
+		singlesCount.innerHTML = bus.countSingles();
+		returnsCount.innerHTML = bus.countReturns();
+	}
 	costPerSingle.innerHTML = 'R' + bus.costPerSingle().toFixed(2);
-	returnsCount.innerHTML = bus.countReturns();
 	costPerReturn.innerHTML = 'R' + bus.costPerReturn().toFixed(2);
 }
 
@@ -35,6 +67,7 @@ function returnCheckboxToggle() {
 	outputElements.forEach(element => {
 		element.classList.toggle('hidden');
 	});
+	calculateButtonClick();
 }
 
 // Create event listener for calculate button
